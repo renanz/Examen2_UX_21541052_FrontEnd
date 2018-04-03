@@ -10,7 +10,8 @@ class TweetsContainer extends Component {
 		super(props)
 		this.state = {
             tweets: [],
-            editingTweetId: null
+            editingTweetId: null,
+            notification: ''
 		}
 	}
     componentDidMount() {
@@ -44,22 +45,47 @@ class TweetsContainer extends Component {
         .catch(error => console.log(error))
     }
 
+    updateTweet = (tweet) => {
+        const tweetIndex = this.state.tweets.findIndex(x => x.id === tweet.id)
+        const tweets = update(this.state.tweets, {
+          [tweetIndex]: { $set: tweet }
+        })
+        this.setState({
+            tweets: tweets,
+            notification: 'Cambios efectuados'
+        })
+      }
+    
+    resetNotification = () => {
+        this.setState({notification: ''})
+    }
+
+    enableEditing = (id) => {
+        this.setState({editingIdeaId: id})
+      }
+
     render() {
         return (
             <div>
-                <button className="newTweetButton" onClick={this.addNewTweet}>
-                    New Tweet
-                </button>
+                <div>
+                    <button className="newTweetButton" onClick={this.addNewTweet}>
+                        New Tweet
+                    </button>
+                    <span className="notification">
+                        {this.state.notification}
+                    </span>
+                </div>
                 <div>
                     {this.state.tweets.map((tweet) => {
                         if(this.state.editingTweetId === tweet.id){
                             return(
-                                <TweetForm tweet={tweet} key={tweet.id} />
+                                <TweetForm tweet={tweet} key={tweet.id} updateTweet={this.updateTweet} 
+                                    resetNotification={this.resetNotification}/>
                             )
                         }
                         else{
                             return(
-                                <Tweet tweet={tweet} key={tweet.id} />
+                                <Tweet tweet={tweet} key={tweet.id} onClick={this.enableEditing} />
                             )
                         }
                     })}

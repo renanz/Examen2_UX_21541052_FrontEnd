@@ -1,9 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-const Tweet = ({ tweet }) =>
-    <div className="tweet" key={tweet.id}>
-        <h4>{tweet.username}</h4>
-        <p>{tweet.body}</p>
-    </div>
+class Tweet extends Component {
+
+    handleClick = () => {
+        this.props.onClick(this.props.tweet.id)
+    }
+
+    render() {
+        return(
+            <div className="tweet">
+                <h4 onClick={this.handleClick}>{this.props.tweet.username}</h4>
+                <p onClick={this.handleClick}>{this.props.tweet.body}</p>
+            </div>
+        )
+    }
+}
 
 export default Tweet

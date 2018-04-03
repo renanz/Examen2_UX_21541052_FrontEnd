@@ -11,13 +11,33 @@ class TweetForm extends Component  {
     }
 
     handleInput = (e) => {
+        this.props.resetNotification()
         this.setState({[e.target.name]: e.target.value})
       }
+
+    handleBlur = () => {
+        const tweet = {
+            username: this.state.username,
+            body: this.state.body
+        }
+
+        axios.put(
+            `http://localhost:3001/api/v1/tweets/${this.props.tweet.id}`,
+            {
+                tweet: tweet
+            }
+        )
+        .then(response => {
+            console.log(response)
+            this.props.updateTweet(response.data)
+        })
+        .catch (error => console.log(error))
+    }
 
     render() {
         return (
             <div className="tweet">
-                <form>
+                <form onBlur={this.handleBlur} >
                     <input className='input' type="text" name="username" placeholder='Enter a username' 
                         value={this.state.username} onChange={this.handleInput} />
 
