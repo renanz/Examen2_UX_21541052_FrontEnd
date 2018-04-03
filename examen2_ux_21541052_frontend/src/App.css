@@ -35,3 +35,13 @@
   padding: 10px;
   border: black
 }
+
+.tweet{
+  background: lightblue;
+  height: 100px;
+  width: 400px;
+  margin: 2px;
+  font-size: 12px;
+  text-align: center;
+  float: left;
+}
