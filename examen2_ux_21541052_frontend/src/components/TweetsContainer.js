@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Tweet from './Tweet'
 import update from 'immutability-helper'
+import TweetForm from './TweetForm'
+
 
 class TweetsContainer extends Component {
     constructor(props){
@@ -50,9 +52,16 @@ class TweetsContainer extends Component {
                 </button>
                 <div>
                     {this.state.tweets.map((tweet) => {
-                        return(
-                            <Tweet tweet={tweet} key={tweet.id} />
-                        )
+                        if(this.state.editingTweetId === tweet.id){
+                            return(
+                                <TweetForm tweet={tweet} key={tweet.id} />
+                            )
+                        }
+                        else{
+                            return(
+                                <Tweet tweet={tweet} key={tweet.id} />
+                            )
+                        }
                     })}
                 </div>
             </div>

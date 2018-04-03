@@ -45,3 +45,22 @@
   text-align: center;
   float: left;
 }
+
+.input {
+  border: 0;
+  background: none;
+  outline: none;
+  margin-top:10px;
+  width: 350px;
+  font-size: 11px;
+}
+
+.input:focus {
+  border: solid 1px lightgrey;
+}
+
+textarea {
+  resize: none;
+  height: 50px;
+  font-size: 11px;
+}
