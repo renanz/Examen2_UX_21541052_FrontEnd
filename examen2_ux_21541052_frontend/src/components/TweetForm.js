@@ -18,7 +18,7 @@ class TweetForm extends Component  {
     handleBlur = () => {
         const tweet = {
             username: this.state.username,
-            body: this.state.body
+            body: this.state.body 
         }
 
         axios.put(
