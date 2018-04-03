@@ -22,7 +22,7 @@ class TweetForm extends Component  {
         }
 
         axios.put(
-            `http://localhost:3001/api/v1/tweets/${this.props.tweet.id}`,
+            `https://examen2-ux-21541052-backend.herokuapp.com/api/v1/tweets/${this.props.tweet.id}`,
             {
                 tweet: tweet
             }

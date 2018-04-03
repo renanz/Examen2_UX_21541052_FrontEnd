@@ -15,7 +15,7 @@ class TweetsContainer extends Component {
 		}
 	}
     componentDidMount() {
-        axios.get('http://localhost:3001/api/v1/tweets.json')
+        axios.get('https://examen2-ux-21541052-backend.herokuapp.com/api/v1/tweets.json')
         .then(response => {
             console.log(response)
             this.setState({tweets: response.data})
@@ -24,7 +24,7 @@ class TweetsContainer extends Component {
     }
 
     addNewTweet = () => {
-        axios.post ('http://localhost:3001/api/v1/tweets',
+        axios.post ('https://examen2-ux-21541052-backend.herokuapp.com/api/v1/tweets',
             { tweet:
                 {
                     username: '',
