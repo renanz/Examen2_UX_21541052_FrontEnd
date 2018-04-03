@@ -7,9 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1 className="App-title">Tweet Timeline</h1>
+          <h1 className="App-title">
+            Twitter Clone
+          </h1>
         </div>
-        <TweetsContainer/>
+        <TweetsContainer />
       </div>
     );
   }
